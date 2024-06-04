@@ -11,7 +11,7 @@ pipeline {
                }
             }
         }
-        stage('deployy to kubernetes') {
+        stage('verify deployment') {
             steps {
                 withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'EKS-cluster', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://C5B163FFF834808EA901AFA9F7EAE944.gr7.us-east-1.eks.amazonaws.com']]) {
                     sh 'kubectl get all -n webapps'
